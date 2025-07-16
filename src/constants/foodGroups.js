@@ -1,9 +1,16 @@
-export const FOOD_GROUPS = [
-  { key: "verduras", label: "Verduras", meta: 6.5 },
-  { key: "frutas", label: "Frutas", meta: 2.5 },
-  { key: "proteinas", label: "Proteínas (animal)", meta: 7.5 },
-  { key: "cereales", label: "Cereales/Tubérculos", meta: 1 },
-  { key: "grasas", label: "Grasas saludables", meta: 2.25 },
-  { key: "azucares", label: "Azúcares (naturales)", meta: 0.5 },
-  { key: "agua", label: "Agua", meta: null },
-];
+export function getFoodGroups() {
+  const saved = localStorage.getItem('food_groups_meta');
+  if (saved) return JSON.parse(saved);
+  return [
+    { key: "verduras", label: "Verduras", meta: null },
+    { key: "frutas", label: "Frutas", meta: null },
+    { key: "cereales", label: "Cereales", meta: null },
+    { key: "leguminosas", label: "Leguminosas", meta: null },
+    { key: "productos_origen_animal", label: "Productos de origen animal", meta: null },
+    { key: "lacteos", label: "Lácteos", meta: null },
+    { key: "grasa", label: "Grasa", meta: null },
+    { key: "azucares", label: "Azúcares", meta: null },
+  ];
+}
+
+export const FOOD_GROUPS = getFoodGroups();

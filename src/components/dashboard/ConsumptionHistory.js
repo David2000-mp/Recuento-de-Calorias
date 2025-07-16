@@ -109,7 +109,7 @@ export default function ConsumptionHistory({ history, setHistory, dateStr }) {
         {(() => {
           const todayEntries = history.filter(e => e.date && e.date.startsWith(dateStr));
           const totalPorciones = todayEntries.reduce((acc, e) => acc + (e.portions || 0), 0);
-          const metaTotal = 18;
+          const metaTotal = Number(localStorage.getItem('meta_total_porciones')) || 18;
           return (
             <MealProgressBar label="Total del día" value={totalPorciones} max={metaTotal} color="success" />
           );
